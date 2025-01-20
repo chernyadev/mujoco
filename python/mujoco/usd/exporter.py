@@ -507,6 +507,7 @@ class USDExporter:
   def _get_geom_name(self, geom):
     """Adding id as part of name for USD file."""
     geom_name = mujoco.mj_id2name(self.model, geom.objtype, geom.objid)
+    geom_name = geom_name.replace("/", "_")
     if not geom_name:
       geom_name = "None"
     geom_name += f"_id{geom.objid}"
